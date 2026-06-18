@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشغل صوت القرآن</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <main class="app">
+        <section class="player-panel" aria-labelledby="page-title">
+            <div class="intro">
+                <p class="eyebrow">مشغل API صوتي</p>
+                <h1 id="page-title">تشغيل تلاوة من رابط مباشر</h1>
+                <p>ضع رابط ملف الصوت أو رابط API يرجع ملف صوت، ثم اضغط تشغيل.</p>
+            </div>
+
+            <form class="url-form" id="audioForm">
+                <label for="audioUrl">رابط الصوت</label>
+                <div class="input-row">
+                    <input
+                        id="audioUrl"
+                        name="audioUrl"
+                        type="url"
+                        inputmode="url"
+                        placeholder="https://server.example.com/quran/audio.mp3"
+                        required
+                    >
+                    <button type="submit">تحميل</button>
+                </div>
+                <p class="hint" id="statusText">يدعم روابط MP3 و M4A و OGG والروابط المباشرة للصوت.</p>
+            </form>
+
+            <div class="player-card" id="playerCard" hidden>
+                <audio id="quranAudio" preload="metadata" controls></audio>
+
+                <div class="custom-controls" aria-label="أدوات التحكم">
+                    <button type="button" id="backwardBtn" title="رجوع 10 ثوان">-10ث</button>
+                    <button type="button" class="primary" id="playBtn">تشغيل</button>
+                    <button type="button" id="forwardBtn" title="تقديم 10 ثوان">+10ث</button>
+                </div>
+
+                <div class="settings-grid">
+                    <label>
+                        الصوت
+                        <input id="volumeRange" type="range" min="0" max="1" step="0.05" value="1">
+                    </label>
+
+                    <label>
+                        السرعة
+                        <select id="speedSelect">
+                            <option value="0.75">0.75x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2x</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script/main.js"></script>
+</body>
+</html>
